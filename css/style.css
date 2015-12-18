@@ -86,6 +86,7 @@ input:focus {
 @media (min-width: 600px) {
   .error p {
     font-size: 20px;
+    color: white;
   }
 }
 
@@ -110,7 +111,7 @@ span {
   right: 0;
 }
 span a {
-  color: #455a64;
+  color: #ff9205;
 }
 span i {
   padding: 10px 15px;
