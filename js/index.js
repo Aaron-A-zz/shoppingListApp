@@ -1,6 +1,6 @@
 $(function(){
-	function addTodo(e){
-		e.preventDefault();
+	function addTodo(){
+		
 
 		if($('input').val().trim() == "") {
 
@@ -9,7 +9,7 @@ $(function(){
 			
 			$('.error').hide();
 			var $todo = $('input').val(); 
-			
+
 			var $newListItem = $('<li class="todo">' + $todo + '<span>' + 
 			'<a href="#" class="check">' + '<i class="fa fa-check fa-lg"></i>' + '</a>' +
 			'<a href="#" class="delete-todo">' + '<i class="fa fa-trash-o fa-lg"></i>' + '</a>' + 
@@ -23,6 +23,10 @@ $(function(){
 		}
 	};
 
+	$('i.fa-times').on('click', function(){
+		$('.error').hide();
+	});
+
 	
 	$('body').on('click','i.fa-times', function(e){
 		e.preventDefault();
@@ -30,10 +34,12 @@ $(function(){
 	});
 
 	
-	$('.add-todo').click(addTodo(e));
+	$('.add-todo').click(function(e){
+		e.preventDefault();
+		addTodo();
+	});
 
 
-	
 	$(document).on('keypress', function(e){
 		if(e.which == 13) {
 			addTodo();
@@ -52,6 +58,13 @@ $(function(){
 	$(document).on('click', '.check', function(e){
 		e.preventDefault();
 		$(this).closest('li').toggleClass('complete');
+	});
+
+	$(document).on('click', '.delete-todo' , function(e){
+		e.preventDefault();
+		$(this).closest('li').fadeOut(500, function(){
+			$(this).remove();
+		});
 	});
 
 
